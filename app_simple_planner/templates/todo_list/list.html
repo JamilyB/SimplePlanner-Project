@@ -1,0 +1,51 @@
+{% extends 'shared/layout.html' %}
+
+{% block content %}
+    <h1>TO-DO LIST</h1>
+    <section class="addTask-container">
+    <input type="text" id="taskInput" placeholder="Write a new task...">
+    <button id="selectButton" onclick="toggleOptions()"><i class="fas fa-caret-down"></i></button>
+    <select class="categorySelect">
+        <option value="trabalho">Trabalho</option>
+        <option value="estudo">Estudo</option>
+        <option value="lazer">Lazer</option>
+        <option value="outra">Outra</option>
+    </select>
+    <input type="text" id="categoryInput" placeholder="Write a new category">
+    <button onclick="addTask()">ADD</button>
+    </section>
+    <div class="wrapper">
+    <select id="select-List" onchange="TypeList()">
+        <option value="To-do">Pendentes</option>
+        <option value="Done">Concluídas</option>
+        <option value="All">Todas</option>
+    </select>
+    <nav class="ClassTasks">
+        <ul>
+        <li>Todas</li>
+        <li>Trabalho</li>
+        <li>Estudo</li>
+        <li>Lazer</li>
+        </ul>
+    </nav>
+    </div>
+    <section id="Todo-task" class="ListPage">
+    <p1>TAREFAS PENDENTES</p1>
+    <div id="Text_NoTask">
+        <p1>No tasks for today.</p1>
+    </div>
+    <ul id="taskList"></ul>
+    </section>  
+    <section id="completed-Task" class="ListPage">
+    <p1>TAREFAS CONCLUIDAS</p1>
+    <ul id="completedTaskList"></ul>
+    </section>
+    <section id="All-Task" class="ListPage">
+    <p1>TODAS TAREFAS</p1>
+    <ul id="AllTaskList"></ul>
+    </section>
+
+{% endblock %}
+
+
+

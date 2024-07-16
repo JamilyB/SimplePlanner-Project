@@ -1,0 +1,27 @@
+
+{% extends 'shared/layout.html' %}
+
+{% block title %}Login{% endblock %}
+{% load static %}
+{% block content %}
+<h2>Login</h2>
+<form id="loginForm" method="POST">
+    {% csrf_token %}
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Username">
+        <span id="usernameError" class="error"></span>
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Password">
+        <span id="passwordError" class="error"></span>
+    </div>
+    <button type="submit">Login</button>
+</form>
+<div id="formError" class="error"></div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/login.js' %}"></script>
+{% endblock %}
