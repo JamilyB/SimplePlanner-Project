@@ -31,7 +31,6 @@ def register(request):
     user = User.objects.filter(username=username)
 
     if user:
-      userx2=1
       return HttpResponse("Usuário já existe") 
 
     user = User.objects.create_user(username=username, email=email, password=password)
