@@ -1,0 +1,29 @@
+.btn-pink {
+    color: #fff;
+    background-color: #ff69b4;
+    border-color: #ff69b4;
+}
+.btn-pink:hover {
+    color: #fff;
+    background-color: #ff1493;
+    border-color: #ff1493;
+}
+
+.custom-navbar {
+    background-color: #555555;
+}
+
+.custom-navbar .navbar-brand,
+.custom-navbar .navbar-nav .nav-link {
+    color: #ffffff; /* Cor do texto na barra de navegação */
+    font-size: 15px; /* Tamanho da fonte grande */
+}
+
+.custom-navbar .navbar-nav .nav-link:hover {
+    color: #ff69b4; /* Cor do texto ao passar o mouse por cima */
+}
+
+.custom-search:focus {
+    border-color: #e83e8c; /* Cor da borda rosa ao clicar/focar */
+    box-shadow: 0 0 0 0.2rem rgba(232, 62, 140, 0.25); /* Sombra rosa ao clicar/focar */
+}

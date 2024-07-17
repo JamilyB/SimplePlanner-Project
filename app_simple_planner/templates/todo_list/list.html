@@ -1,51 +1,72 @@
-{% extends 'shared/layout.html' %}
-
+{% extends 'shared/navbar.html' %}
+{% load static %}
 {% block content %}
+<div class="container mt-4">
     <h1>TO-DO LIST</h1>
+    
+    <!-- Seção de adicionar tarefa -->
     <section class="addTask-container">
-    <input type="text" id="taskInput" placeholder="Write a new task...">
-    <button id="selectButton" onclick="toggleOptions()"><i class="fas fa-caret-down"></i></button>
-    <select class="categorySelect">
-        <option value="trabalho">Trabalho</option>
-        <option value="estudo">Estudo</option>
-        <option value="lazer">Lazer</option>
-        <option value="outra">Outra</option>
-    </select>
-    <input type="text" id="categoryInput" placeholder="Write a new category">
-    <button onclick="addTask()">ADD</button>
+        <div class="input-group mb-3">
+            <input type="text" id="taskInput" class="form-control" placeholder="Write a new task...">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" onclick="toggleOptions()">
+                    <i class="fas fa-caret-down"></i>
+                </button>
+            </div>
+            <select class="form-control categorySelect">
+                <option value="trabalho">Trabalho</option>
+                <option value="estudo">Estudo</option>
+                <option value="lazer">Lazer</option>
+                <option value="outra">Outra</option>
+            </select>
+            <input type="text" id="categoryInput" class="form-control" placeholder="Write a new category">
+            <div class="input-group-append">
+                <button class="btn btn-primary" onclick="addTask()">ADD</button>
+            </div>
+        </div>
     </section>
-    <div class="wrapper">
-    <select id="select-List" onchange="TypeList()">
-        <option value="To-do">Pendentes</option>
-        <option value="Done">Concluídas</option>
-        <option value="All">Todas</option>
-    </select>
-    <nav class="ClassTasks">
-        <ul>
-        <li>Todas</li>
-        <li>Trabalho</li>
-        <li>Estudo</li>
-        <li>Lazer</li>
-        </ul>
-    </nav>
+    
+    <!-- Seção de filtros e navegação -->
+    <div class="wrapper mt-4">
+        <select id="select-List" class="form-control" onchange="TypeList()">
+            <option value="To-do">Pendentes</option>
+            <option value="Done">Concluídas</option>
+            <option value="All">Todas</option>
+        </select>
+        
+        <nav class="ClassTasks mt-3">
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a class="nav-link active" href="#">Todas</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Trabalho</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Estudo</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Lazer</a></li>
+            </ul>
+        </nav>
     </div>
-    <section id="Todo-task" class="ListPage">
-    <p1>TAREFAS PENDENTES</p1>
-    <div id="Text_NoTask">
-        <p1>No tasks for today.</p1>
-    </div>
-    <ul id="taskList"></ul>
+    
+    <!-- Seção de tarefas pendentes -->
+    <section id="Todo-task" class="ListPage mt-4">
+        <h3 class="mb-3">TAREFAS PENDENTES</h3>
+        <div id="Text_NoTask" class="alert alert-info" role="alert">
+            <p>Nenhuma tarefa pendente.</p>
+        </div>
+        <ul id="taskList" class="list-group"></ul>
     </section>  
-    <section id="completed-Task" class="ListPage">
-    <p1>TAREFAS CONCLUIDAS</p1>
-    <ul id="completedTaskList"></ul>
-    </section>
-    <section id="All-Task" class="ListPage">
-    <p1>TODAS TAREFAS</p1>
-    <ul id="AllTaskList"></ul>
+
+    <!-- Seção de tarefas concluídas -->
+    <section id="completed-Task" class="ListPage mt-4">
+        <h3 class="mb-3">TAREFAS CONCLUÍDAS</h3>
+        <ul id="completedTaskList" class="list-group"></ul>
     </section>
 
+    <!-- Seção de todas as tarefas -->
+    <section id="All-Task" class="ListPage mt-4">
+        <h3 class="mb-3">TODAS AS TAREFAS</h3>
+        <ul id="AllTaskList" class="list-group"></ul>
+    </section>
+</div>
 {% endblock %}
 
-
-
+{% block scripts %}
+    <script src="{% static 'js/script.js' %}"></script>
+{% endblock %}
