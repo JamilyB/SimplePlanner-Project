@@ -4,28 +4,25 @@
 <div class="container mt-4">
     <h1>TO-DO LIST</h1>
     
-    <!-- Seção de adicionar tarefa -->
-    <section class="addTask-container">
-        <div class="input-group mb-3">
-            <input type="text" id="taskInput" class="form-control" placeholder="Write a new task...">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button" onclick="toggleOptions()">
-                    <i class="fas fa-caret-down"></i>
-                </button>
+    <form method="POST" action=".">
+        {% csrf_token %}
+        <!-- Seção de adicionar tarefa -->
+        <section class="addTask-container">
+            <div class="input-group mb-3">
+                <input name="title" type="text" id="taskInput" class="form-control" placeholder="Write a new task...">
+                <select name="category" class="form-control categorySelect">
+                    <option value="trabalho">Trabalho</option>
+                    <option value="estudo">Estudo</option>
+                    <option value="lazer">Lazer</option>
+                    <option value="outra">Outra</option>
+                </select>
+                <div class="input-group-append">
+                    <button name="action" value="add" type="submit" class="btn btn-primary">ADD</button>
+                </div>
             </div>
-            <select class="form-control categorySelect">
-                <option value="trabalho">Trabalho</option>
-                <option value="estudo">Estudo</option>
-                <option value="lazer">Lazer</option>
-                <option value="outra">Outra</option>
-            </select>
-            <input type="text" id="categoryInput" class="form-control" placeholder="Write a new category">
-            <div class="input-group-append">
-                <button class="btn btn-primary" onclick="addTask()">ADD</button>
-            </div>
-        </div>
-    </section>
-    
+        </section>
+    </form>
+
     <!-- Seção de filtros e navegação -->
     <div class="wrapper mt-4">
         <select id="select-List" class="form-control" onchange="TypeList()">
@@ -44,14 +41,24 @@
         </nav>
     </div>
     
+    
     <!-- Seção de tarefas pendentes -->
-    <section id="Todo-task" class="ListPage mt-4">
-        <h3 class="mb-3">TAREFAS PENDENTES</h3>
-        <div id="Text_NoTask" class="alert alert-info" role="alert">
-            <p>Nenhuma tarefa pendente.</p>
-        </div>
-        <ul id="taskList" class="list-group"></ul>
-    </section>  
+    <h3 class="mb-3">TAREFAS PENDENTES</h3>
+    <ul>
+        {% for Task in Tasks %}
+            <li>
+                {{ Task.title }} - {{ Task.category }}
+                <form method="post" action="{% url 'todo_list' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="task_id" value="{{ Task.pk }}">
+                    <button type="submit" name="action" value="delete">Deletar</button>
+                    <button type="submit" name="action" value="complete">Concluir</button>
+                </form>
+            </li>
+        {% empty %}
+            <li>No tasks available.</li>
+        {% endfor %}
+    </ul>
 
     <!-- Seção de tarefas concluídas -->
     <section id="completed-Task" class="ListPage mt-4">
@@ -67,6 +74,6 @@
 </div>
 {% endblock %}
 
-{% block scripts %}
-    <script src="{% static 'js/script.js' %}"></script>
-{% endblock %}
+<!--{% block scripts %}
+     #script
+{% endblock %}-->

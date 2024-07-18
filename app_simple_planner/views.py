@@ -4,7 +4,8 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
-
+from .models import Task
+from .forms import TaskForm
 
 
 def index(request):
@@ -13,9 +14,46 @@ def index(request):
     else:
         return render(request, 'pages/index.html')
 
+"""@login_required
+def todo_list(request):
+  if request.method == 'POST':
+    add_task(request) 
+    return redirect('todo_list')  
+  Tasks = {
+      'Tasks': Task.objects.all()
+    }
+   
+  return render(request, 'todo_list/list.html',Tasks)"""
+
 @login_required
 def todo_list(request):
-  return render(request, 'todo_list/list.html')
+    
+    Tasks = {
+      'Tasks': Task.objects.all()
+    }
+
+    if request.method == 'POST':
+        action = request.POST.get('action')
+
+        if action == 'add':
+            add_task(request) 
+            return redirect('todo_list')
+        
+        elif action == 'delete':
+            task_id = request.POST.get('task_id')
+            task = Task.objects.filter(id=task_id).first()
+            if task:
+                task.delete()
+
+        elif action == 'complete':
+            task_id = request.POST.get('task_id')
+            task = Task.objects.filter(id=task_id).first()
+            if task:
+                task.completed = True
+                task.save()
+
+    return render(request, 'todo_list/list.html',Tasks)
+
 
 def home(request):
   return render(request, 'todo_list/home.html')
@@ -48,17 +86,22 @@ def login_view(request):
         
         if user is not None:
             login(request, user)
-            # Redirecionar para uma página de sucesso, ou fazer outra coisa
             return render(request, 'todo_list/home.html')
         else:
-            # Se o usuário não for encontrado, exibir uma mensagem de erro
             return HttpResponse("Usuário ou senha incorretos.")
-            # Ou, se preferir, você pode retornar um render com um contexto de erro
-            #return render(request, 'sua_template_de_login.html', {'erro': True})
-    
-    # Se for GET (ou qualquer outro método), apenas renderizar o formulário de login
+
     return render(request, 'registration/login.html')
 
 def logout_view(request):
     logout(request)
-    return redirect('index')  # Redireciona para a página de login após o logout
+    return redirect('index') 
+
+def add_task(request):
+   new_task = Task()
+   new_task.title = request.POST.get('title')
+   new_task.category = request.POST.get('category')
+   
+   print(f'Title: {new_task.title}, Category: {new_task.category}')
+   new_task.save()
+   print('Task saved successfully') 
+   
