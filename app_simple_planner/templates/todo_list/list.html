@@ -23,6 +23,7 @@
         </section>
     </form>
 
+    
     <!-- Seção de filtros e navegação -->
     <div class="wrapper mt-4">
         <select id="select-List" class="form-control" onchange="TypeList()">
@@ -33,18 +34,38 @@
         
         <nav class="ClassTasks mt-3">
             <ul class="nav nav-pills">
-                <li class="nav-item"><a class="nav-link active" href="#">Todas</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Trabalho</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Estudo</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Lazer</a></li>
+                <li class="nav-item"><a class="nav-link active" href="{% url 'todo_list' %}">All Tasks</a></li>
+                {% for category in categories %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'todo_list_by_category' category=category %}">{{ category }}</a></li>
+                {% endfor %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'completed_tasks' %}">Completed Tasks</a></li>
             </ul>
         </nav>
     </div>
-    
-    
-    <!-- Seção de tarefas pendentes -->
-    <h3 class="mb-3">TAREFAS PENDENTES</h3>
-    <ul>
+
+    <!-- Lista de Tarefas -->
+     <ul class="list-group">
+        {% for Task in Tasks %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="mb-1">{{ Task.title }}</h5>
+                    <small class="text-muted">{{ Task.category }}</small>
+                </div>
+                <form method="post" action="{% url 'todo_list' %}" class="d-inline">
+                    {% csrf_token %}
+                    <input type="hidden" name="task_id" value="{{ Task.pk }}">
+                    <button type="submit" name="action" value="delete" class="btn btn-danger btn-sm me-2">Deletar</button>
+                    {% if not Task.completed %}
+                        <button type="submit" name="action" value="complete" class="btn btn-success btn-sm">Concluir</button>
+                    {% endif %}
+                </form>
+            </li>
+        {% empty %}
+            <li class="list-group-item text-center">No tasks available.</li>
+        {% endfor %}
+    </ul>
+
+    <!--<ul>
         {% for Task in Tasks %}
             <li>
                 {{ Task.title }} - {{ Task.category }}
@@ -58,20 +79,10 @@
         {% empty %}
             <li>No tasks available.</li>
         {% endfor %}
-    </ul>
+    </ul>-->
 
-    <!-- Seção de tarefas concluídas -->
-    <section id="completed-Task" class="ListPage mt-4">
-        <h3 class="mb-3">TAREFAS CONCLUÍDAS</h3>
-        <ul id="completedTaskList" class="list-group"></ul>
-    </section>
+     
 
-    <!-- Seção de todas as tarefas -->
-    <section id="All-Task" class="ListPage mt-4">
-        <h3 class="mb-3">TODAS AS TAREFAS</h3>
-        <ul id="AllTaskList" class="list-group"></ul>
-    </section>
-</div>
 {% endblock %}
 
 <!--{% block scripts %}

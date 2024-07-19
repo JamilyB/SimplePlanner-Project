@@ -1,11 +1,37 @@
 {% extends 'shared/navbar.html' %}
 
 {% block content %}
-    <h1>Home</h1>
+<style>
+    body {
+        background-color: #f8f9fa;
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        max-width: 600px;
+        margin-top: 50px;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    }
+    .user-info {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .btn-logout {
+        margin-top: 10px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center">Bem-vindo ao seu aplicativo!</h1>
     <div class="user-info">
-        Bem-vindo, {{ user.username }}
-        <a class="btn btn-secondary" href="{% url 'logout' %}">Sair</a>
+        <p class="lead">Bem-vindo, <strong>{{ user.username }}</strong>!</p>
+        <a class="btn btn-primary btn-logout" href="{% url 'logout' %}">Sair</a>
     </div>
+</div>
+
 {% endblock %}
 
     

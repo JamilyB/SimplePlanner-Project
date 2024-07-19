@@ -1,28 +1,6 @@
 // Array para armazenar as tarefas
 let tasks = [];
 
-// Função para adicionar uma nova tarefa
-function addTask() {
-    const taskInput = document.getElementById("taskInput").value;
-    const categorySelect = document.getElementById("categorySelect").value;
-
-    if (taskInput.trim() === "") {
-        alert("Por favor, insira uma tarefa.");
-        return;
-    }
-
-    const task = {
-        name: taskInput,
-        category: categorySelect,
-        completed: false,
-        dateTimeAdded: new Date().toLocaleString(),
-        dateTimeCompleted: null
-    };
-
-    tasks.push(task);
-    renderTaskList();
-    document.getElementById("taskInput").value = "";
-}
 
 // Função para renderizar a lista de tarefas com base no filtro selecionado
 function renderTaskList() {
@@ -76,20 +54,3 @@ function TypeList() {
         document.getElementById("All-Task").style.display = "block";
     }
 }
-
-// Função para atualizar a mensagem de "Sem tarefas" conforme necessário
-function updateNoTaskMessage() {
-    const noTaskMessage = document.getElementById("Text_NoTask");
-
-    if (tasks.length === 0) {
-        noTaskMessage.style.display = "block";
-    } else {
-        noTaskMessage.style.display = "none";
-    }
-}
-
-// Inicializa a renderização da lista ao carregar a página
-document.addEventListener("DOMContentLoaded", function() {
-    renderTaskList();
-    updateNoTaskMessage();
-});
