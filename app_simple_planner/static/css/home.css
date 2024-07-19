@@ -1,16 +1,16 @@
-.btn-pink {
+.btn-orange {
     color: #fff;
-    background-color: #ff69b4;
-    border-color: #ff69b4;
+    background-color: #b92b00;
+    border-color: #641700;
 }
-.btn-pink:hover {
+.btn-orange:hover {
     color: #fff;
-    background-color: #ff1493;
-    border-color: #ff1493;
+    background-color: #641700;
+    border-color: #641700;
 }
 
 .custom-navbar {
-    background-color: #555555;
+    background-color: #641700;
 }
 
 .custom-navbar .navbar-brand,
@@ -20,10 +20,18 @@
 }
 
 .custom-navbar .navbar-nav .nav-link:hover {
-    color: #ff69b4; /* Cor do texto ao passar o mouse por cima */
+    color: #ff5e2c; /* Cor do texto ao passar o mouse por cima */
 }
 
 .custom-search:focus {
-    border-color: #e83e8c; /* Cor da borda rosa ao clicar/focar */
-    box-shadow: 0 0 0 0.2rem rgba(232, 62, 140, 0.25); /* Sombra rosa ao clicar/focar */
+    border-color: #a62600; /* Cor da borda rosa ao clicar/focar */
+    box-shadow: 0 0 0 0.2rem rgba(216, 0, 0, 0.25); /* Sombra rosa ao clicar/focar */
+}
+
+.divider:after,
+.divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
 }
