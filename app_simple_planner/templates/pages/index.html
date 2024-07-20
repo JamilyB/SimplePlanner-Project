@@ -1,7 +1,13 @@
 {% extends 'shared/layout.html' %}
 
 {% block content %}
-    <h1>Introdução</h1>
+<div class="container">
+    <h1 class="text-start" style="width: 25rem; margin-top: 100px;">Bem-vindo ao Simple Planner</h1>
+    <h3 class="text-start" style="width: 25rem;"> Organize suas tarefas do dia a dia rapidamente</h3>
+    <div class="user-info">
+        <a class="btn btn-orange btn-logout" href="{% url 'logout' %}">Sair</a>
+    </div>
+</div>
 {% endblock %}
 
     
