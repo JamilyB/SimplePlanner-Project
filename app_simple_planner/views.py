@@ -84,7 +84,7 @@ def login_view(request):
             login(request, user)
             return render(request, 'todo_list/home.html')
         else:
-            return HttpResponse("Usuário ou senha incorretos.")
+            return render(request, 'registration/login.html', {'error_message': 'Usuário ou senha incorretos.'})
 
     return render(request, 'registration/login.html')
 

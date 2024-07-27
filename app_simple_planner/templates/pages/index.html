@@ -2,12 +2,62 @@
 
 {% block content %}
 <div class="container">
-    <h1 class="text-start" style="width: 25rem; margin-top: 100px;">Bem-vindo ao Simple Planner</h1>
-    <h3 class="text-start" style="width: 25rem;"> Organize suas tarefas do dia a dia rapidamente</h3>
-    <div class="user-info">
-        <a class="btn btn-orange btn-logout" href="{% url 'logout' %}">Sair</a>
+    <div data-spy="scroll" data-target="#navbar-example2" data-offset="0">
+        <div class="row">
+            <div class="col-12" style="height: 200px; background-color: #ffffff; color: white; line-height: 25px; text-align: center;">
+                Divisória com altura de 300px
+            </div>
+        </div>
+        <div id="start" class="row">
+            <div class="col">
+                <h1 class="text-center">Bem-vindo ao Simple Planner</h1>
+                <h2 class="text-center" > Organize suas tarefas do dia a dia de forma simples!</h2>
+                <h5 class="text-center" > Esse aplicativo permite organizar suas tarefas por categorias, contando com um calendário integrado</h5>
+                <div class="text-center">
+                    <a class="btn btn-orange bnt-big mt-4" href="{% url 'register' %}">Comece agora</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12" style="height: 500px; background-color: #ffffff; color: white; line-height: 25px; text-align: center;">
+                Divisória com altura de 500px
+            </div>
+        </div>
+
+
+        <div id="about" class="row">
+            <div class="col">
+                <h1 class="text-start">Esse app serve para organizar suas tarefas</h1>
+                <h3 class="text-start" > criado para ser simples e prático</h3>
+            </div>
+            <div class="col">
+              Este é um teste
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12" style="height: 500px; background-color: #ffffff; color: white; line-height: 25px; text-align: center;">
+                Divisória com altura de 500px
+            </div>
+        </div>
+
+
+        <div id="contact" class="row">
+            <div class="col">
+                <h1 class="text-start">aqui é a seção de contato</h1>
+                <h3 class="text-start" > confira como se conectar conosco</h3>
+            </div>
+            <div class="col">
+              Este é um teste
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12" style="height: 500px; background-color: #ffffff; color: white; line-height: 25px; text-align: center;">
+                Divisória com altura de 500px
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
 
     
+

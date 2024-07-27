@@ -1,18 +1,27 @@
 /* texto:#240a02;*/
 
 
+.error {
+    color: #f7031b; /* Cor vermelha do Bootstrap para erros */
+    font-size: 0.875rem; /* Tamanho da fonte menor */
+    margin-top: 0.25rem; /* Margem superior pequena */
+    display: block; /* Faz com que o span se comporte como um bloco */
+}
 
 .btn-orange {
-    color: #240a02;
-    background-color: #ff8661;
-    border-color: #ff5622;
+    font-weight: bold;
+    color: #fff2e2;
+    background-color: #ff5622;
 }
 .btn-orange:hover {
     color: #fff2e2;
-    background-color: #641700;
-    border-color: #641700;
+    background-color: #f87952;
 }
 
+.bnt-big{
+    font-size: 1.5rem; 
+    padding: 0.75rem 1.5rem;
+}
 .custom-navbar {
     background-color: #641700;
 }
@@ -39,3 +48,4 @@
     height: 1px;
     background: #240a02;
 }
+

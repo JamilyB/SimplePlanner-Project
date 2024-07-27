@@ -18,16 +18,15 @@
                 <div data-mdb-input-init class="form-outline mb-4">
                   <label class="form-label" for="form1Example13">Username</label>
                   <input type="text" id="username" name="username" placeholder="Username" class="form-control form-control-lg" />
-                  <span id="usernameError" class="error"></span>
+                  <span id="usernameError" class="text-danger"></span>
                 </div>
         
                 <!-- Password input -->
                 <div data-mdb-input-init class="form-outline mb-4">
                   <label class="form-label" for="form1Example23">Password</label>
                   <input type="password" id="password" name="password" placeholder="Password" class="form-control form-control-lg" />
-                  <span id="passwordError" class="error"></span>
+                  <span id="passwordError" class="text-danger"></span>
                 </div>
-        
                 <div class="d-flex justify-content-around align-items-center mb-4">
                   <!-- Checkbox -->
                   <div class="form-check">
@@ -36,16 +35,19 @@
                   </div>
                   <a href="#!">Forgot password?</a>
                 </div>
+                {% if error_message %}
+                  <span class="text-danger d-block mt-2">{{ error_message }}</span>
+                {% endif %}
         
                 <!-- Submit button -->
-                <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-orange btn-lg btn-block">Sign in</button>
+                <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-orange btn-block">Sign in</button>
         
                 <div class="divider d-flex align-items-center my-4">
                   <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
                 </div>
         
-                <a data-mdb-ripple-init class="btn btn-orange btn-lg btn-block" href="{% url 'register' %}" role="button">
-                  <i class="fab fa-facebook-f me-2"></i>Register
+                <a data-mdb-ripple-init class="btn btn-orange btn-block" href="{% url 'register' %}" role="button">
+                  <i></i>Register
                 </a>
         
               </form>
@@ -53,6 +55,32 @@
           </div>
         </div>
       </section>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 </form>
 
 

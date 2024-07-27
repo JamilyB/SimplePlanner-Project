@@ -11,26 +11,26 @@
     <div>
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" placeholder="Username...">
-        <span id="usernameError" class="error"></span>
+        <span id="usernameError" class="text-danger"></span>
     </div>
     <div>
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" placeholder="Email...">
-        <span id="emailError" class="error"></span>
+        <span id="emailError" class="text-danger"></span>
     </div>
     <div>
         <label for="password1">Password:</label>
         <input type="password" id="password1" name="password1" placeholder="Password...">
-        <span id="password1Error" class="error"></span>
+        <span id="password1Error" class="text-danger"></span>
     </div>
     <div>
         <label for="password2">Confirm Password:</label>
         <input type="password" id="password2" name="password2" placeholder="Confirm Password...">
-        <span id="password2Error" class="error"></span>
+        <span id="password2Error" class="text-danger"></span>
     </div>
-    <button type="submit" value="register">Cadastrar</button>
+    <button type="submit" value="register" class="btn btn-orange">Cadastrar</button>
 </form>
-<div id="formError" class="error"></div>
+<div id="formError" class="text-danger"></div>
 {% endblock %}
 
 {% block extra_js %}
